@@ -1,0 +1,79 @@
+---
+import esData from '../i18n/es.json';
+
+const data = esData;
+---
+
+<section id="education" class="py-24 md:py-32 px-6">
+  <div class="max-w-3xl mx-auto">
+    <!-- Section heading -->
+    <div class="animate-on-scroll mb-16">
+      <p class="text-xs font-display tracking-[0.3em] uppercase mb-3 text-[var(--color-accent)]">02</p>
+      <h2
+        class="text-3xl md:text-4xl font-display font-bold mb-4
+               text-[var(--color-text-light-primary)] dark:text-[var(--color-text-dark-primary)]"
+        data-i18n="sections.education"
+      >
+        {data.sections.education}
+      </h2>
+      <div class="w-16 h-[1.5px] bg-[var(--color-accent)]"></div>
+    </div>
+
+    <!-- Timeline -->
+    {data.education.map((edu, idx) => (
+      <div class="animate-on-scroll timeline-line pl-8 pb-12 last:pb-0">
+        <!-- Dot -->
+        <div class="absolute left-0 top-1 w-[15px] h-[15px] rounded-full
+                    border-2 border-[var(--color-accent)]
+                    bg-[var(--color-surface-light)] dark:bg-[var(--color-surface-dark)]"></div>
+
+        <!-- Date & Location -->
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mb-2">
+          <span class="text-xs font-display tracking-wider uppercase text-[var(--color-accent)]">
+            <span data-i18n-edu={String(idx)} data-i18n-field="startDate">{edu.startDate}</span>
+            {' — '}
+            <span data-i18n-edu={String(idx)} data-i18n-field="endDate">{edu.endDate}</span>
+          </span>
+          <span class="text-xs text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]"
+                data-i18n-edu={String(idx)} data-i18n-field="location">
+            {edu.location}
+          </span>
+        </div>
+
+        <!-- Degree & Area -->
+        <h3 class="text-lg md:text-xl font-display font-semibold mb-1
+                   text-[var(--color-text-light-primary)] dark:text-[var(--color-text-dark-primary)]">
+          <span data-i18n-edu={String(idx)} data-i18n-field="degree">{edu.degree}</span>
+          {' '}
+          <span data-i18n-edu={String(idx)} data-i18n-field="area">{edu.area}</span>
+        </h3>
+        <p class="text-sm font-body mb-4
+                  text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]"
+           data-i18n-edu={String(idx)} data-i18n-field="institution">
+          {edu.institution}
+        </p>
+
+        <!-- Highlights -->
+        <ul class="space-y-2">
+          {edu.highlights.map((hl, hlIdx) => (
+            <li class="flex items-start gap-3 text-sm font-body
+                       text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-[var(--color-accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span data-i18n-edu-hl={`${idx},${hlIdx}`}>{hl}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <!-- Section divider -->
+  <div class="max-w-3xl mx-auto mt-16">
+    <svg class="section-divider w-full h-[1px]" viewBox="0 0 800 1" preserveAspectRatio="none">
+      <line x1="0" y1="0.5" x2="800" y2="0.5" stroke="var(--color-accent)" stroke-width="0.5" opacity="0.2" />
+    </svg>
+  </div>
+</section>

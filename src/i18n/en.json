@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Abraham Asael Puch Kuk | Portfolio",
+    "description": "Professional portfolio of Abraham Asael Puch Kuk — B.Sc. in Information Technology"
+  },
+  "nav": {
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "activities": "Activities",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Abraham Asael Puch Kuk",
+    "role": "B.Sc. in Information Technology",
+    "location": "Mérida, Yucatán",
+    "cta": "Contact me"
+  },
+  "sections": {
+    "experience": "Work Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "activities": "Extracurricular Activities",
+    "contact": "Contact"
+  },
+  "experience": [
+    {
+      "company": "Grupo MEGASUR",
+      "position": "Systems Analyst",
+      "startDate": "Jan 2022",
+      "endDate": "Aug 2024",
+      "location": "Mérida, Yucatán, Mexico",
+      "highlights": [
+        "Administration and maintenance of enterprise ERP system, ensuring operational availability and data consistency.",
+        "Level 2 technical support: diagnosis and resolution of infrastructure and software incidents.",
+        "SQL Server database administration: query optimization, referential integrity maintenance and report generation.",
+        "Desktop application development in C#/.NET (Windows Forms) for internal process automation.",
+        "Design and implementation of scripts for workflow automation and recurring operational tasks.",
+        "Report creation and data analysis using the Microsoft Office suite."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Autónoma de Yucatán",
+      "area": "Information Technology",
+      "degree": "B.Sc.",
+      "startDate": "Aug 2019",
+      "endDate": "May 2025",
+      "location": "Mérida, Yucatán, Mexico",
+      "highlights": [
+        "Design and implementation of an e-commerce platform with client-server architecture.",
+        "Full-stack development of a regional transportation reservation system, including inventory management and transaction processing."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "label": "Programming Languages",
+      "details": "Java, C#, C++, PHP, Python and JavaScript. Proficient in web technologies (HTML, CSS) and data formats (JSON, XML, YAML). Experience consuming and integrating RESTful APIs."
+    },
+    {
+      "label": "Databases",
+      "details": "Relational and non-relational data modeling. Experience with MySQL, SQL Server, MariaDB, SQLite, PostgreSQL and MongoDB. Schema design, query optimization and database engine administration."
+    },
+    {
+      "label": "Frameworks & Libraries",
+      "details": ".NET, MAUI, Spring Boot, CodeIgniter, Bootstrap, Django, Tailwind CSS, NumPy, Pandas and Matplotlib."
+    },
+    {
+      "label": "Infrastructure & DevOps",
+      "details": "Administration of Windows and Linux environments. Version control with Git. Containerization with Docker."
+    },
+    {
+      "label": "Artificial Intelligence",
+      "details": "LLM integration (OpenAI, Anthropic, Google, Minimax). AI Agents (OpenCode, Antigravity, Codex). Prompt engineering, MCPs, Agent Skills. Local model deployment (llama.cpp, Ollama)."
+    },
+    {
+      "label": "Office & Tools",
+      "details": "Proficient with the Microsoft Office suite for report creation and data analysis. Experience with multimedia editing software and file management tools."
+    },
+    {
+      "label": "Languages",
+      "details": "English (TOEFL B2), Spanish (Native)."
+    },
+    {
+      "label": "Interpersonal Skills",
+      "details": "Strong adaptability and rapid acquisition of new technologies and methodologies. Effective collaboration in results-driven, multidisciplinary teams."
+    }
+  ],
+  "activities": [
+    "Continuous language learning.",
+    "Optimizing development environments and workflows.",
+    "Self-taught study of physics and discrete mathematics.",
+    "Physical training.",
+    "Cinema, series and anime."
+  ],
+  "footer": {
+    "copyright": "All rights reserved.",
+    "builtWith": "Built with Astro & Tailwind CSS"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "lang": {
+    "toggle": "ES",
+    "current": "EN"
+  }
+}

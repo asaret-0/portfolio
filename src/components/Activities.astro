@@ -1,0 +1,47 @@
+---
+import esData from '../i18n/es.json';
+
+const data = esData;
+---
+
+<section id="activities" class="py-24 md:py-32 px-6">
+  <div class="max-w-3xl mx-auto">
+    <!-- Section heading -->
+    <div class="animate-on-scroll mb-16">
+      <p class="text-xs font-display tracking-[0.3em] uppercase mb-3 text-[var(--color-accent)]">04</p>
+      <h2
+        class="text-3xl md:text-4xl font-display font-bold mb-4
+               text-[var(--color-text-light-primary)] dark:text-[var(--color-text-dark-primary)]"
+        data-i18n="sections.activities"
+      >
+        {data.sections.activities}
+      </h2>
+      <div class="w-16 h-[1.5px] bg-[var(--color-accent)]"></div>
+    </div>
+
+    <!-- Activities list -->
+    <ul class="stagger-children space-y-5">
+      {data.activities.map((activity, idx) => (
+        <li class="flex items-start gap-4 group">
+          <!-- Decorative number -->
+          <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
+                       text-xs font-display font-semibold
+                       border border-[var(--color-accent)]/30 text-[var(--color-accent)]
+                       group-hover:bg-[var(--color-accent)]/10
+                       transition-colors duration-300">
+            {String(idx + 1).padStart(2, '0')}
+          </span>
+          <p
+            class="text-base font-body pt-1
+                   text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
+                   group-hover:text-[var(--color-text-light-primary)] dark:group-hover:text-[var(--color-text-dark-primary)]
+                   transition-colors duration-300"
+            data-i18n-activity={String(idx)}
+          >
+            {activity}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

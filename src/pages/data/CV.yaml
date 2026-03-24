@@ -1,0 +1,79 @@
+cv:
+  name: "Abraham Asael Puch Kuk"
+  location: "Mérida, Yucatán"
+  email: "asael.kuk@gmail.com"
+  phone: "+52 9991374343"
+  social_networks:
+    - network: "LinkedIn"
+      username: "abraham-kuk"
+    - network: "GitHub"
+      username: "asaret-0"
+  sections:
+    education:
+      - institution: "Universidad Autónoma de Yucatán"
+        area: "Tecnologías de la Información"
+        degree: Lic.
+        start_date: "2019-08"
+        end_date: "2025-05"
+        location: "Mérida, Yucatán, México"
+        highlights:
+          - "Diseño e implementación de plataforma e-commerce con arquitectura
+            cliente-servidor."
+          - "Desarrollo full-stack de sistema de reservaciones para transporte
+            regional, incluyendo gestión de inventario y procesamiento de
+            transacciones."
+    experience:
+      - company: "Grupo MEGASUR"
+        position: "Analista de Sistemas"
+        start_date: "2022-01"
+        end_date: "2024-08"
+        location: "Mérida, Yucatán, México"
+        highlights:
+          - "Administración y mantenimiento de sistema ERP empresarial,
+            garantizando disponibilidad operativa y consistencia de datos."
+          - "Soporte técnico nivel 2: diagnóstico y resolución de incidencias en
+            infraestructura y software."
+          - "Administración de bases de datos SQL Server: optimización de
+            consultas, mantenimiento de integridad referencial y generación de
+            reportes."
+          - "Desarrollo de aplicaciones de escritorio en C#/.NET (Windows Forms)
+            para automatización de procesos internos."
+          - "Diseño e implementación de scripts para automatización de flujos de
+            trabajo y tareas operativas recurrentes."
+          - "Elaboración de reportes y análisis de datos con herramientas de la
+            suite Microsoft Office."
+    skills:
+      - label: "Lenguajes de Programación"
+        details: "Java, C#, C++, PHP, Python y JavaScript. Dominio de tecnologías
+          web (HTML, CSS) y formatos de datos (JSON, XML, YAML). Experiencia en
+          consumo e integración de APIs RESTful."
+      - label: "Bases de Datos"
+        details: "Modelado relacional y no relacional. Experiencia con MySQL,
+          SQL Server, MariaDB, SQLite, PostgreSQL y MongoDB. Diseño de esquemas,
+          optimización de consultas y administración de motores de BD."
+      - label: "Frameworks y Librerías"
+        details: ".NET, MAUI, Spring Boot, CodeIgniter, Bootstrap, Django,
+          Tailwind CSS, NumPy, Pandas y Matplotlib."
+      - label: "Infraestructura y DevOps"
+        details: "Administración de entornos Windows y Linux. Control de
+          versiones con Git. Contenedorización con Docker."
+      - label: "Inteligencia Artificial"
+        details: "Integración de LLMs (OpenAI, Anthropic, Google, Minimax).
+          Agentes de IA (OpenCode, Antigravity, Codex). Ingeniería de prompts,
+          MCPs, Agent Skills. Despliegue local de modelos (llama.cpp, Ollama)."
+      - label: "Ofimática y Herramientas"
+        details: "Dominio de la suite Microsoft Office para elaboración de
+          reportes y análisis. Manejo de software de edición multimedia y
+          herramientas de gestión de archivos."
+      - label: "Idiomas"
+        details: "Inglés (TOEFL B2), Español (Nativo)."
+      - label: "Habilidades Interpersonales"
+        details: "Capacidad de adaptación y aprendizaje acelerado de nuevas
+          tecnologías y metodologías. Colaboración efectiva en equipos
+          multidisciplinarios orientados a resultados."
+    extracurricular_activities:
+      - bullet: "Aprendizaje continuo de idiomas."
+      - bullet: "Optimización de entornos de desarrollo y flujos de trabajo."
+      - bullet: "Estudio autodidacta de física y matemáticas discretas."
+      - bullet: "Entrenamiento físico."
+      - bullet: "Cine, series y anime."
