@@ -1,15 +1,18 @@
 ---
-import '../styles/global.css';
-import esData from '../i18n/es.json';
-import enData from '../i18n/en.json';
+import "../styles/global.css";
+import esData from "../i18n/es.json";
+import enData from "../i18n/en.json";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { title = 'Abraham Asael Puch Kuk | Portfolio', description = 'Professional portfolio' } = Astro.props;
-const siteUrl = 'https://abrahamkuk.dev';
+const {
+  title = "Abraham P. | Portfolio",
+  description = "Professional portfolio",
+} = Astro.props;
+const siteUrl = "https://abrahamkuk.dev";
 ---
 
 <html lang="es" class="dark">
@@ -23,8 +26,16 @@ const siteUrl = 'https://abrahamkuk.dev';
     <title>{title}</title>
 
     <!-- Theme color -->
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+    <meta
+      name="theme-color"
+      content="#0a0a0a"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#fafaf9"
+      media="(prefers-color-scheme: light)"
+    />
 
     <!-- OG / Social -->
     <meta property="og:type" content="website" />
@@ -36,7 +47,11 @@ const siteUrl = 'https://abrahamkuk.dev';
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" id="twitter-description" content={description} />
+    <meta
+      name="twitter:description"
+      id="twitter-description"
+      content={description}
+    />
 
     <link rel="canonical" href={siteUrl} />
 
@@ -52,19 +67,21 @@ const siteUrl = 'https://abrahamkuk.dev';
 
     <!-- Anti-FOUC: Apply theme before render -->
     <script is:inline>
-      (function() {
+      (function () {
         try {
-          var stored = localStorage.getItem('theme');
-        } catch(e) { var stored = null; }
-        if (stored === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else if (stored === 'dark') {
-          document.documentElement.classList.add('dark');
+          var stored = localStorage.getItem("theme");
+        } catch (e) {
+          var stored = null;
+        }
+        if (stored === "light") {
+          document.documentElement.classList.remove("dark");
+        } else if (stored === "dark") {
+          document.documentElement.classList.add("dark");
         } else {
-          if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            document.documentElement.classList.remove('dark');
+          if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            document.documentElement.classList.remove("dark");
           } else {
-            document.documentElement.classList.add('dark');
+            document.documentElement.classList.add("dark");
           }
         }
       })();
@@ -72,12 +89,14 @@ const siteUrl = 'https://abrahamkuk.dev';
 
     <!-- Anti-FOUC: Apply saved language before render -->
     <script is:inline>
-      (function() {
+      (function () {
         try {
-          var lang = localStorage.getItem('lang');
-        } catch(e) { var lang = null; }
-        if (lang === 'en') {
-          document.documentElement.lang = 'en';
+          var lang = localStorage.getItem("lang");
+        } catch (e) {
+          var lang = null;
+        }
+        if (lang === "en") {
+          document.documentElement.lang = "en";
         }
       })();
     </script>
@@ -90,9 +109,9 @@ const siteUrl = 'https://abrahamkuk.dev';
     <script is:inline define:vars={{ esData, enData }}>
       window.__i18n = { es: esData, en: enData };
       try {
-        window.__lang = localStorage.getItem('lang') || 'es';
-      } catch(e) {
-        window.__lang = 'es';
+        window.__lang = localStorage.getItem("lang") || "es";
+      } catch (e) {
+        window.__lang = "es";
       }
     </script>
 
@@ -100,18 +119,22 @@ const siteUrl = 'https://abrahamkuk.dev';
 
     <!-- i18n engine -->
     <script is:inline>
-      (function() {
+      (function () {
         function applyLang(lang) {
           var data = window.__i18n[lang];
           if (!data) return;
           window.__lang = lang;
-          try { localStorage.setItem('lang', lang); } catch(e) {}
+          try {
+            localStorage.setItem("lang", lang);
+          } catch (e) {}
           document.documentElement.lang = lang;
 
           // Update all elements with data-i18n
-          document.querySelectorAll('[data-i18n]').forEach(function(el) {
-            var key = el.getAttribute('data-i18n');
-            var val = key.split('.').reduce(function(o, k) { return o && o[k]; }, data);
+          document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n");
+            var val = key.split(".").reduce(function (o, k) {
+              return o && o[k];
+            }, data);
             if (val !== undefined && val !== null) {
               el.textContent = val;
             }
@@ -119,9 +142,9 @@ const siteUrl = 'https://abrahamkuk.dev';
 
           // Update dynamic lists (experience, education, skills, activities)
           // Experience
-          document.querySelectorAll('[data-i18n-exp]').forEach(function(el) {
-            var idx = parseInt(el.getAttribute('data-i18n-exp'));
-            var field = el.getAttribute('data-i18n-field');
+          document.querySelectorAll("[data-i18n-exp]").forEach(function (el) {
+            var idx = parseInt(el.getAttribute("data-i18n-exp"));
+            var field = el.getAttribute("data-i18n-field");
             var exp = data.experience[idx];
             if (exp && field && exp[field] !== undefined) {
               el.textContent = exp[field];
@@ -129,20 +152,26 @@ const siteUrl = 'https://abrahamkuk.dev';
           });
 
           // Experience highlights
-          document.querySelectorAll('[data-i18n-exp-hl]').forEach(function(el) {
-            var parts = el.getAttribute('data-i18n-exp-hl').split(',');
-            var expIdx = parseInt(parts[0]);
-            var hlIdx = parseInt(parts[1]);
-            var exp = data.experience[expIdx];
-            if (exp && exp.highlights && exp.highlights[hlIdx] !== undefined) {
-              el.textContent = exp.highlights[hlIdx];
-            }
-          });
+          document
+            .querySelectorAll("[data-i18n-exp-hl]")
+            .forEach(function (el) {
+              var parts = el.getAttribute("data-i18n-exp-hl").split(",");
+              var expIdx = parseInt(parts[0]);
+              var hlIdx = parseInt(parts[1]);
+              var exp = data.experience[expIdx];
+              if (
+                exp &&
+                exp.highlights &&
+                exp.highlights[hlIdx] !== undefined
+              ) {
+                el.textContent = exp.highlights[hlIdx];
+              }
+            });
 
           // Education
-          document.querySelectorAll('[data-i18n-edu]').forEach(function(el) {
-            var idx = parseInt(el.getAttribute('data-i18n-edu'));
-            var field = el.getAttribute('data-i18n-field');
+          document.querySelectorAll("[data-i18n-edu]").forEach(function (el) {
+            var idx = parseInt(el.getAttribute("data-i18n-edu"));
+            var field = el.getAttribute("data-i18n-field");
             var edu = data.education[idx];
             if (edu && field && edu[field] !== undefined) {
               el.textContent = edu[field];
@@ -150,20 +179,26 @@ const siteUrl = 'https://abrahamkuk.dev';
           });
 
           // Education highlights
-          document.querySelectorAll('[data-i18n-edu-hl]').forEach(function(el) {
-            var parts = el.getAttribute('data-i18n-edu-hl').split(',');
-            var eduIdx = parseInt(parts[0]);
-            var hlIdx = parseInt(parts[1]);
-            var edu = data.education[eduIdx];
-            if (edu && edu.highlights && edu.highlights[hlIdx] !== undefined) {
-              el.textContent = edu.highlights[hlIdx];
-            }
-          });
+          document
+            .querySelectorAll("[data-i18n-edu-hl]")
+            .forEach(function (el) {
+              var parts = el.getAttribute("data-i18n-edu-hl").split(",");
+              var eduIdx = parseInt(parts[0]);
+              var hlIdx = parseInt(parts[1]);
+              var edu = data.education[eduIdx];
+              if (
+                edu &&
+                edu.highlights &&
+                edu.highlights[hlIdx] !== undefined
+              ) {
+                el.textContent = edu.highlights[hlIdx];
+              }
+            });
 
           // Skills
-          document.querySelectorAll('[data-i18n-skill]').forEach(function(el) {
-            var idx = parseInt(el.getAttribute('data-i18n-skill'));
-            var field = el.getAttribute('data-i18n-field');
+          document.querySelectorAll("[data-i18n-skill]").forEach(function (el) {
+            var idx = parseInt(el.getAttribute("data-i18n-skill"));
+            var field = el.getAttribute("data-i18n-field");
             var skill = data.skills[idx];
             if (skill && field && skill[field] !== undefined) {
               el.textContent = skill[field];
@@ -171,35 +206,37 @@ const siteUrl = 'https://abrahamkuk.dev';
           });
 
           // Activities
-          document.querySelectorAll('[data-i18n-activity]').forEach(function(el) {
-            var idx = parseInt(el.getAttribute('data-i18n-activity'));
-            if (data.activities[idx] !== undefined) {
-              el.textContent = data.activities[idx];
-            }
-          });
+          document
+            .querySelectorAll("[data-i18n-activity]")
+            .forEach(function (el) {
+              var idx = parseInt(el.getAttribute("data-i18n-activity"));
+              if (data.activities[idx] !== undefined) {
+                el.textContent = data.activities[idx];
+              }
+            });
 
           // Update toggle button text
-          var toggleBtn = document.getElementById('lang-toggle-text');
+          var toggleBtn = document.getElementById("lang-toggle-text");
           if (toggleBtn) {
             toggleBtn.textContent = data.lang.toggle;
           }
 
           // Update meta title & description
           document.title = data.meta.title;
-          var desc = data.meta.description || '';
-          var metaDesc = document.getElementById('meta-description');
-          var ogDesc = document.getElementById('og-description');
-          var twDesc = document.getElementById('twitter-description');
-          if (metaDesc) metaDesc.setAttribute('content', desc);
-          if (ogDesc) ogDesc.setAttribute('content', desc);
-          if (twDesc) twDesc.setAttribute('content', desc);
+          var desc = data.meta.description || "";
+          var metaDesc = document.getElementById("meta-description");
+          var ogDesc = document.getElementById("og-description");
+          var twDesc = document.getElementById("twitter-description");
+          if (metaDesc) metaDesc.setAttribute("content", desc);
+          if (ogDesc) ogDesc.setAttribute("content", desc);
+          if (twDesc) twDesc.setAttribute("content", desc);
         }
 
         // Apply on load
         applyLang(window.__lang);
 
         // Listen for language change
-        window.addEventListener('langChange', function(e) {
+        window.addEventListener("langChange", function (e) {
           applyLang(e.detail.lang);
         });
       })();
@@ -207,18 +244,25 @@ const siteUrl = 'https://abrahamkuk.dev';
 
     <!-- Scroll animations (includes section dividers) -->
     <script is:inline>
-      (function() {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      (function () {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+        );
 
-        document.querySelectorAll('.animate-on-scroll, .stagger-children, .section-divider').forEach(function(el) {
-          observer.observe(el);
-        });
+        document
+          .querySelectorAll(
+            ".animate-on-scroll, .stagger-children, .section-divider",
+          )
+          .forEach(function (el) {
+            observer.observe(el);
+          });
       })();
     </script>
   </body>
