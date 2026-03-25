@@ -3,6 +3,7 @@ import "../styles/global.css";
 import esData from "../i18n/es.json";
 import enData from "../i18n/en.json";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title?: string;
@@ -124,6 +125,7 @@ const enJson = JSON.stringify(enData);
     <a href="#main-content" class="skip-to-content">Skip to content</a>
 
     <SpeedInsights />
+    <Analytics />
 
     <!-- i18n data embedded for client-side switching -->
     <script is:inline define:vars={{ esJson, enJson }}>
