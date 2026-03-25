@@ -8,6 +8,7 @@ cv:
       username: "abraham-kuk"
     - network: "GitHub"
       username: "asaret-0"
+  website: "https://portfolio-abrahampuch.vercel.app/"
   sections:
     education:
       - institution: "Universidad Autónoma de Yucatán"
