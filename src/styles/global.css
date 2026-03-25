@@ -112,6 +112,24 @@ html {
   top: 0;
 }
 
+/* ── View Transitions: circular reveal for theme toggle ── */
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: vt-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  clip-path: circle(0px at var(--reveal-x, 50%) var(--reveal-y, 50%));
+  mix-blend-mode: normal;
+}
+
+@keyframes vt-reveal {
+  to {
+    clip-path: circle(var(--reveal-r, 150vmax) at var(--reveal-x, 50%) var(--reveal-y, 50%));
+  }
+}
+
 /* ── Prefers reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -125,6 +143,12 @@ html {
 
   html {
     scroll-behavior: auto;
+  }
+
+  /* Disable circular reveal for reduced motion users */
+  ::view-transition-new(root) {
+    animation: none !important;
+    clip-path: none !important;
   }
 
   .animate-on-scroll,

@@ -23,15 +23,15 @@
     stroke-linejoin="round"
     aria-hidden="true"
   >
-    <circle cx="12" cy="12" r="5" />
-    <line x1="12" y1="1" x2="12" y2="3" />
-    <line x1="12" y1="21" x2="12" y2="23" />
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-    <line x1="1" y1="12" x2="3" y2="12" />
-    <line x1="21" y1="12" x2="23" y2="12" />
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
   </svg>
 
   <!-- Moon icon (shown in light mode) -->
@@ -46,46 +46,90 @@
     stroke-linejoin="round"
     aria-hidden="true"
   >
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
   </svg>
 </button>
 
 <script is:inline>
-  (function() {
-    var btn = document.getElementById('theme-toggle');
+  (function () {
+    var btn = document.getElementById("theme-toggle");
     if (!btn) return;
 
     function updateAriaLabel() {
-      var isDark = document.documentElement.classList.contains('dark');
-      btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      var isDark = document.documentElement.classList.contains("dark");
+      btn.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light mode" : "Switch to dark mode",
+      );
+    }
+
+    function toggleTheme() {
+      var isDark = document.documentElement.classList.contains("dark");
+      if (isDark) {
+        document.documentElement.classList.remove("dark");
+        try { localStorage.setItem("theme", "light"); } catch (e) {}
+      } else {
+        document.documentElement.classList.add("dark");
+        try { localStorage.setItem("theme", "dark"); } catch (e) {}
+      }
+      updateAriaLabel();
     }
 
     updateAriaLabel();
 
-    btn.addEventListener('click', function() {
-      var isDark = document.documentElement.classList.contains('dark');
-      if (isDark) {
-        document.documentElement.classList.remove('dark');
-        try { localStorage.setItem('theme', 'light'); } catch(e) {}
-      } else {
-        document.documentElement.classList.add('dark');
-        try { localStorage.setItem('theme', 'dark'); } catch(e) {}
+    btn.addEventListener("click", function (e) {
+      // Calculate origin point (center of button)
+      var rect = btn.getBoundingClientRect();
+      var x = rect.left + rect.width / 2;
+      var y = rect.top + rect.height / 2;
+
+      // Radius to cover the farthest corner of the screen
+      var radius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      // Pass coordinates to CSS custom properties
+      document.documentElement.style.setProperty("--reveal-x", x + "px");
+      document.documentElement.style.setProperty("--reveal-y", y + "px");
+      document.documentElement.style.setProperty("--reveal-r", radius + "px");
+
+      // Fallback for browsers without View Transitions support
+      if (!document.startViewTransition) {
+        toggleTheme();
+        return;
       }
-      updateAriaLabel();
+
+      // Disable CSS transitions so startViewTransition captures the final state instantly
+      var prevBodyTransition = document.body.style.transition;
+      document.body.style.transition = "none";
+
+      var vt = document.startViewTransition(function () {
+        toggleTheme();
+      });
+
+      // Restore transitions after the reveal animation finishes
+      vt.finished.then(function () {
+        document.body.style.transition = prevBodyTransition;
+      });
     });
 
     // Listen for OS preference changes (only if no manual override)
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      var hasOverride = false;
-      try { hasOverride = !!localStorage.getItem('theme'); } catch(err) {}
-      if (!hasOverride) {
-        if (e.matches) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", function (e) {
+        var hasOverride = false;
+        try {
+          hasOverride = !!localStorage.getItem("theme");
+        } catch (err) {}
+        if (!hasOverride) {
+          if (e.matches) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+          updateAriaLabel();
         }
-        updateAriaLabel();
-      }
-    });
+      });
   })();
 </script>
