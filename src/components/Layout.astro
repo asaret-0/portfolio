@@ -13,6 +13,10 @@ const {
   description = "Professional portfolio",
 } = Astro.props;
 const siteUrl = "https://abrahamkuk.dev";
+
+// Pre-serialize i18n data as minified JSON strings to reduce inline script payload
+const esJson = JSON.stringify(esData);
+const enJson = JSON.stringify(enData);
 ---
 
 <html lang="es" class="dark">
@@ -59,11 +63,24 @@ const siteUrl = "https://abrahamkuk.dev";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Fonts (loaded via <link> for better performance) -->
+    <!-- Google Fonts: non-blocking load (preload + media swap trick) -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+      />
+    </noscript>
 
     <!-- Anti-FOUC: Apply theme before render -->
     <script is:inline>
@@ -106,8 +123,8 @@ const siteUrl = "https://abrahamkuk.dev";
     <a href="#main-content" class="skip-to-content">Skip to content</a>
 
     <!-- i18n data embedded for client-side switching -->
-    <script is:inline define:vars={{ esData, enData }}>
-      window.__i18n = { es: esData, en: enData };
+    <script is:inline define:vars={{ esJson, enJson }}>
+      window.__i18n = { es: JSON.parse(esJson), en: JSON.parse(enJson) };
       try {
         window.__lang = localStorage.getItem("lang") || "es";
       } catch (e) {

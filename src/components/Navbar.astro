@@ -235,6 +235,13 @@ import LangToggle from "./LangToggle.astro";
           mobileBtn.focus();
         }
       });
+
+      // Close menu when resizing to desktop (otherwise body overflow:hidden stays stuck)
+      window.addEventListener("resize", function () {
+        if (isMenuOpen && window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
     }
   })();
 </script>
