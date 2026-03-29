@@ -94,8 +94,8 @@
       document.documentElement.style.setProperty("--reveal-y", y + "px");
       document.documentElement.style.setProperty("--reveal-r", radius + "px");
 
-      // Fallback for browsers without View Transitions support
-      if (!document.startViewTransition) {
+      // Skip animation if browser doesn't support VT or user prefers reduced motion
+      if (!document.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         toggleTheme();
         return;
       }

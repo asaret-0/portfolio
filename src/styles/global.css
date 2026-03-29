@@ -145,12 +145,6 @@ html {
     scroll-behavior: auto;
   }
 
-  /* Disable circular reveal for reduced motion users */
-  ::view-transition-new(root) {
-    animation: none !important;
-    clip-path: none !important;
-  }
-
   .animate-on-scroll,
   .animate-on-scroll-left {
     opacity: 1;
