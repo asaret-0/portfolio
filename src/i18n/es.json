@@ -6,6 +6,7 @@
   "nav": {
     "experience": "Experiencia",
     "education": "Educación",
+    "projects": "Proyectos",
     "skills": "Habilidades",
     "activities": "Actividades",
     "contact": "Contacto"
@@ -52,6 +53,17 @@
       "highlights": [
         "Diseño e implementación de plataforma e-commerce con arquitectura cliente-servidor.",
         "Desarrollo full-stack de sistema de reservaciones para transporte regional, incluyendo gestión de inventario y procesamiento de transacciones."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "PharmInventory(Core)",
+      "summary": "Inventario para distribución y comercialización de medicamentos.",
+      "highlights": [
+        "Desarrollo de services para invariantes de dominio complejas (stock, inmutabilidad, FEFO).",
+        "React 19 SPA + CodeIgniter 4 API, monolito con frontend desacoplado",
+        "CRUD Puro"
       ]
     }
   ],

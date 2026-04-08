@@ -43,6 +43,16 @@ cv:
             trabajo y tareas operativas recurrentes."
           - "Elaboración de reportes y análisis de datos con herramientas de la
             suite Microsoft Office."
+    projects:
+      - name: "PharmInventory(Core)"
+        date:
+        start_date: 2026-01
+        end_date: 2026-03
+        location: México
+        summary: Inventario para distribución y comercialización de medicamentos.
+        highlights:
+          - React 19 SPA + CodeIgniter 4 API, monolito con frontend desacoplado.
+          - Services para invariantes de dominio complejas (stock, inmutabilidad, FEFO).
     skills:
       - label: "Lenguajes de Programación"
         details: "Java, C#, PHP, Python y JavaScript. Dominio de tecnologías
