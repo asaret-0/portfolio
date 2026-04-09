@@ -217,6 +217,33 @@ const enJson = JSON.stringify(enData);
               }
             });
 
+          // Projects
+          document.querySelectorAll("[data-i18n-proj]").forEach(function (el) {
+            var idx = parseInt(el.getAttribute("data-i18n-proj"));
+            var field = el.getAttribute("data-i18n-field");
+            var proj = data.projects[idx];
+            if (proj && field && proj[field] !== undefined) {
+              el.textContent = proj[field];
+            }
+          });
+
+          // Project highlights
+          document
+            .querySelectorAll("[data-i18n-proj-hl]")
+            .forEach(function (el) {
+              var parts = el.getAttribute("data-i18n-proj-hl").split(",");
+              var projIdx = parseInt(parts[0]);
+              var hlIdx = parseInt(parts[1]);
+              var proj = data.projects[projIdx];
+              if (
+                proj &&
+                proj.highlights &&
+                proj.highlights[hlIdx] !== undefined
+              ) {
+                el.textContent = proj.highlights[hlIdx];
+              }
+            });
+
           // Skills
           document.querySelectorAll("[data-i18n-skill]").forEach(function (el) {
             var idx = parseInt(el.getAttribute("data-i18n-skill"));

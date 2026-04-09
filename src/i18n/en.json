@@ -21,6 +21,7 @@
   "sections": {
     "experience": "Work Experience",
     "education": "Education",
+    "projects": "Projects",
     "skills": "Skills",
     "activities": "Extracurricular Activities",
     "contact": "Contact"
@@ -60,10 +61,13 @@
     {
       "name": "PharmInventory(Core)",
       "summary": "Inventory management system for the distribution and commercialization of pharmaceuticals.",
+      "startDate": "Jan 2026",
+      "endDate": "Mar 2026",
+      "location": "Mérida, Yucatán, Mexico",
       "highlights": [
         "Development of services for complex domain invariants (stock, immutability, FEFO).",
-        "React 19 SPA + CodeIgniter 4 API, monolith with decoupled frontend",
-        "Pure CRUD"
+        "React 19 SPA + CodeIgniter 4 API, monolith with decoupled frontend.",
+        "Pure CRUD."
       ]
     }
   ],

@@ -21,6 +21,7 @@
   "sections": {
     "experience": "Experiencia Laboral",
     "education": "Educación",
+    "projects": "Proyectos",
     "skills": "Habilidades",
     "activities": "Actividades Extracurriculares",
     "contact": "Contacto"
@@ -59,11 +60,14 @@
   "projects": [
     {
       "name": "PharmInventory(Core)",
+      "startDate": "Ene 2026",
+      "endDate": "Mar 2026",
+      "location": "Mérida, Yucatán, México",
       "summary": "Inventario para distribución y comercialización de medicamentos.",
       "highlights": [
         "Desarrollo de services para invariantes de dominio complejas (stock, inmutabilidad, FEFO).",
-        "React 19 SPA + CodeIgniter 4 API, monolito con frontend desacoplado",
-        "CRUD Puro"
+        "React 19 SPA + CodeIgniter 4 API, monolito con frontend desacoplado.",
+        "CRUD Puro."
       ]
     }
   ],
