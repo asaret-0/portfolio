@@ -59,6 +59,7 @@
   ],
   "projects": [
     {
+      "id": 0,
       "name": "PharmInventory(Core)",
       "startDate": "Ene 2026",
       "endDate": "Mar 2026",

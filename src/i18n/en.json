@@ -59,6 +59,7 @@
   ],
   "projects": [
     {
+      "id": 0,
       "name": "PharmInventory(Core)",
       "summary": "Inventory management system for the distribution and commercialization of pharmaceuticals.",
       "startDate": "Jan 2026",
