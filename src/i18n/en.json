@@ -91,7 +91,7 @@
     },
     {
       "label": "Artificial Intelligence",
-      "details": "LLM integration (OpenAI, Anthropic, Google, Minimax). AI Agents (OpenCode, Antigravity, Codex). Prompt engineering, MCPs, Agent Skills. Local model deployment (llama.cpp, Ollama)."
+      "details": "LLM integration (OpenAI, Anthropic, Google, Minimax). AI Agents (OpenCode, Claude Code, Antigravity and Codex). Prompt engineering, MCPs, Agent Skills. Local model deployment (llama.cpp and Ollama)."
     },
     {
       "label": "Office & Tools",

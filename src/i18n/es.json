@@ -91,7 +91,7 @@
     },
     {
       "label": "Inteligencia Artificial",
-      "details": "Integración de LLMs (OpenAI, Anthropic, Google, Minimax). Agentes de IA (OpenCode, Antigravity, Codex). Ingeniería de prompts, MCPs, Agent Skills. Despliegue local de modelos (llama.cpp, Ollama)."
+      "details": "Integración de LLMs (OpenAI, Anthropic, Google, Minimax). Agentes de IA (OpenCode, Claude Code, Antigravity y Codex). Ingeniería de prompts, MCPs, Agent Skills. Despliegue local de modelos (llama.cpp y Ollama)."
     },
     {
       "label": "Ofimática y Herramientas",
