@@ -82,7 +82,7 @@
     },
     {
       "label": "Frameworks & Libraries",
-      "details": ".NET, MAUI, React, Spring Boot, CodeIgniter, Composer, Bootstrap, Django, Tailwind CSS, NumPy, Pandas and Matplotlib."
+      "details": ".NET, MAUI(formerly Xamarin), React, Spring Boot, CodeIgniter, Composer, Bootstrap, Django, Tailwind CSS, NumPy, Pandas and Matplotlib."
     },
     {
       "label": "Infrastructure & DevOps",
