@@ -49,7 +49,7 @@
       "area": "Information Technology",
       "degree": "B.Sc.",
       "startDate": "Aug 2019",
-      "endDate": "May 2025",
+      "endDate": "Aug 2025",
       "location": "Mérida, Yucatán, Mexico",
       "highlights": [
         "Design and implementation of an e-commerce platform with client-server architecture.",
@@ -75,7 +75,7 @@
   "skills": [
     {
       "label": "Programming Languages",
-      "details": "Java, C#, PHP, Python and JavaScript. Proficient in web technologies (HTML, CSS) and data formats (JSON, XML, YAML). Experience consuming and integrating RESTful APIs."
+      "details": "Java, C#, PHP, Python and JavaScript. Proficient in web technologies (HTML, CSS) and data formats (JSON, XML, YAML). Experience in consuming and integrating RESTful APIs (cURL, Postman and Bruno)."
     },
     {
       "label": "Databases",
@@ -83,11 +83,11 @@
     },
     {
       "label": "Frameworks & Libraries",
-      "details": ".NET, MAUI, Spring Boot, CodeIgniter, Bootstrap, Django, Tailwind CSS, NumPy, Pandas and Matplotlib."
+      "details": ".NET, MAUI, React, Spring Boot, CodeIgniter, Composer, Bootstrap, Django, Tailwind CSS, NumPy, Pandas and Matplotlib."
     },
     {
       "label": "Infrastructure & DevOps",
-      "details": "Administration of Windows and Linux environments. Version control with Git. Containerization with Docker."
+      "details": "Administration of Windows and Linux environments. Containerization with Docker. Remote control via SSH. Task automation with scripts and CI/CD tools. Version control with Git."
     },
     {
       "label": "Artificial Intelligence",

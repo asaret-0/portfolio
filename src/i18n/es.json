@@ -49,7 +49,7 @@
       "area": "Tecnologías de la Información",
       "degree": "Lic.",
       "startDate": "Ago 2019",
-      "endDate": "May 2025",
+      "endDate": "Ago 2025",
       "location": "Mérida, Yucatán, México",
       "highlights": [
         "Diseño e implementación de plataforma e-commerce con arquitectura cliente-servidor.",
@@ -64,9 +64,9 @@
       "startDate": "Ene 2026",
       "endDate": "Mar 2026",
       "location": "Mérida, Yucatán, México",
-      "summary": "Inventario para distribución y comercialización de medicamentos.",
+      "summary": "Sistema de gestión de inventario para la distribución y comercialización de medicamentos.",
       "highlights": [
-        "Desarrollo de services para invariantes de dominio complejas (stock, inmutabilidad, FEFO).",
+        "Desarrollo de servicios para invariantes de dominio complejas (stock, inmutabilidad, FEFO).",
         "React 19 SPA + CodeIgniter 4 API, monolito con frontend desacoplado.",
         "CRUD Puro."
       ]
@@ -75,7 +75,7 @@
   "skills": [
     {
       "label": "Lenguajes de Programación",
-      "details": "Java, C#, PHP, Python y JavaScript. Dominio de tecnologías web (HTML, CSS) y formatos de datos (JSON, XML, YAML). Experiencia en consumo e integración de APIs RESTful."
+      "details": "Java, C#, PHP, Python y JavaScript. Dominio de tecnologías web (HTML, CSS) y formatos de datos (JSON, XML, YAML). Experiencia en consumo e integración de APIs RESTful (cURL, Postman y Bruno)."
     },
     {
       "label": "Bases de Datos",
@@ -83,11 +83,11 @@
     },
     {
       "label": "Frameworks y Librerías",
-      "details": ".NET, MAUI, Spring Boot, CodeIgniter, Bootstrap, Django, Tailwind CSS, NumPy, Pandas y Matplotlib."
+      "details": ".NET, MAUI(antes Xamarin), React, Spring Boot, CodeIgniter, Composer, Bootstrap, Django, Tailwind CSS, NumPy, Pandas y Matplotlib."
     },
     {
       "label": "Infraestructura y DevOps",
-      "details": "Administración de entornos Windows y Linux. Control de versiones con Git. Contenedorización con Docker."
+      "details": "Administración de entornos Windows y Linux. Contenedorización con Docker. Control remoto via SSH. Automatización de tareas con scripts y herramientas de CI/CD. Control de versiones con Git."
     },
     {
       "label": "Inteligencia Artificial",
