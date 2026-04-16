@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
 cv:
   name: "Abraham Asael Puch Kuk"
   location: "Mérida, Yucatán"
@@ -44,7 +45,7 @@ cv:
           - "Elaboración de reportes y análisis de datos con herramientas de la
             suite Microsoft Office."
     projects:
-      - name: 'PharmInventory(Core)'
+      - name: '[PharmInventory(Core)](https://drive.google.com/drive/folders/1zRAjYKgbUms996YzQbLbkcXPOv4gLzSa?usp=sharing)'
         date:
         start_date: 2026-01
         end_date: 2026-03
@@ -57,21 +58,20 @@ cv:
       - label: "Lenguajes de Programación"
         details: Java, C#, PHP, Python y JavaScript. Dominio de tecnologías web (HTML,
           CSS) y formatos de datos (JSON, XML, YAML). Experiencia en consumo e
-          integración de APIs RESTful.
+          integración de APIs RESTful (cURL, Postman y Bruno).
       - label: "Bases de Datos"
         details: "Modelado relacional y no relacional. Experiencia con MySQL, SQL
           Server, MariaDB, SQLite, PostgreSQL y MongoDB. Diseño de esquemas,
           optimización de consultas y administración de motores de BD."
       - label: "Frameworks y Librerías"
-        details: ".NET, MAUI, Spring Boot, CodeIgniter, Bootstrap, Django, Tailwind CSS,
+        details: ".NET, MAUI(antes Xamarin), React, Spring Boot, CodeIgniter, Composer, Bootstrap, Django, Tailwind CSS,
           NumPy, Pandas y Matplotlib."
       - label: "Infraestructura y DevOps"
-        details: "Administración de entornos Windows y Linux. Control de versiones con
-          Git. Contenedorización con Docker."
+        details: "Administración de entornos Windows y Linux. Contenedorización con Docker. Control remoto via SSH. Automatización de tareas con scripts y herramientas de CI/CD. Control de versiones con Git."
       - label: "Inteligencia Artificial"
         details: "Integración de LLMs (OpenAI, Anthropic, Google, Minimax). Agentes de
-          IA (OpenCode, Antigravity, Codex). Ingeniería de prompts, MCPs, Agent
-          Skills. Despliegue local de modelos (llama.cpp, Ollama)."
+          IA (OpenCode, Claude Code, Antigravity y Codex). Ingeniería de prompts, MCPs, Agent
+          Skills. Despliegue local de modelos (llama.cpp y Ollama)."
       - label: "Ofimática y Herramientas"
         details: "Dominio de la suite Microsoft Office para elaboración de reportes y
           análisis. Manejo de software de edición multimedia y herramientas de
@@ -88,3 +88,182 @@ cv:
       - bullet: "Estudio autodidacta de física y matemáticas discretas."
       - bullet: "Entrenamiento físico."
       - bullet: "Cine, series y anime."
+design:
+  theme: engineeringresumes
+  page:
+    size: us-letter
+    top_margin: 0.7in
+    bottom_margin: 0.7in
+    left_margin: 0.7in
+    right_margin: 0.7in
+    show_footer: false
+    show_top_note: true
+  colors:
+    body: rgb(0, 0, 0)
+    name: rgb(0, 0, 0)
+    headline: rgb(0, 0, 0)
+    connections: rgb(0, 0, 0)
+    section_titles: rgb(0, 0, 0)
+    links: rgb(0, 0, 0)
+    footer: rgb(128, 128, 128)
+    top_note: rgb(128, 128, 128)
+  typography:
+    line_spacing: 0.6em
+    alignment: justified
+    date_and_location_column_alignment: right
+    font_family:
+      body: XCharter
+      name: XCharter
+      headline: XCharter
+      connections: XCharter
+      section_titles: XCharter
+    font_size:
+      body: 10pt
+      name: 25pt
+      headline: 10pt
+      connections: 10pt
+      section_titles: 1.2em
+    small_caps:
+      name: false
+      headline: false
+      connections: false
+      section_titles: false
+    bold:
+      name: false
+      headline: false
+      connections: false
+      section_titles: true
+  links:
+    underline: true
+    show_external_link_icon: false
+  header:
+    alignment: center
+    photo_width: 3.5cm
+    photo_position: left
+    photo_space_left: 0.4cm
+    photo_space_right: 0.4cm
+    space_below_name: 0.7cm
+    space_below_headline: 0.7cm
+    space_below_connections: 0.7cm
+    connections:
+      phone_number_format: international
+      hyperlink: true
+      show_icons: false
+      display_urls_instead_of_usernames: true
+      separator: '|'
+      space_between_connections: 0.5cm
+  section_titles:
+    type: with_full_line
+    line_thickness: 0.5pt
+    space_above: 0.5cm
+    space_below: 0.3cm
+  sections:
+    allow_page_break: true
+    space_between_regular_entries: 0.42cm
+    space_between_text_based_entries: 0.15cm
+    show_time_spans_in: []
+  entries:
+    date_and_location_width: 4.15cm
+    side_space: 0cm
+    space_between_columns: 0.1cm
+    allow_page_break: false
+    short_second_row: false
+    degree_width: 1cm
+    summary:
+      space_above: 0.08cm
+      space_left: 0cm
+    highlights:
+      bullet: ●
+      nested_bullet: ●
+      space_left: 0cm
+      space_above: 0.08cm
+      space_between_items: 0.08cm
+      space_between_bullet_and_text: 0.3em
+  templates:
+    footer: '*NAME -- PAGE_NUMBER/TOTAL_PAGES*'
+    top_note: '*LAST_UPDATED CURRENT_DATE*'
+    single_date: MONTH_ABBREVIATION YEAR
+    date_range: START_DATE – END_DATE
+    time_span: HOW_MANY_YEARS YEARS HOW_MANY_MONTHS MONTHS
+    one_line_entry:
+      main_column: '**LABEL:** DETAILS'
+    education_entry:
+      main_column: |-
+        **INSTITUTION**, DEGREE_WITH_AREA -- LOCATION
+        SUMMARY
+        HIGHLIGHTS
+      degree_column:
+      date_and_location_column: DATE
+    normal_entry:
+      main_column: |-
+        **NAME** -- **LOCATION**
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column: DATE
+    experience_entry:
+      main_column: |-
+        **POSITION**, COMPANY -- LOCATION
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column: DATE
+    publication_entry:
+      main_column: |-
+        **TITLE**
+        SUMMARY
+        AUTHORS
+        URL (JOURNAL)
+      date_and_location_column: DATE
+locale:
+  language: english
+  last_updated: Last updated in
+  month: month
+  months: months
+  year: year
+  years: years
+  present: present
+  phrases:
+    degree_with_area: DEGREE in AREA
+  month_abbreviations:
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - June
+    - July
+    - Aug
+    - Sept
+    - Oct
+    - Nov
+    - Dec
+  month_names:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+settings:
+  current_date: '2026-03-01'
+  render_command:
+    output_folder: rendercv_output
+    design:
+    locale:
+    typst_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.typ
+    pdf_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.pdf
+    markdown_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.md
+    html_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.html
+    png_path: OUTPUT_FOLDER/NAME_IN_SNAKE_CASE_CV.png
+    dont_generate_markdown: false
+    dont_generate_html: false
+    dont_generate_typst: false
+    dont_generate_pdf: false
+    dont_generate_png: false
+  bold_keywords: []
+  pdf_title: CV
