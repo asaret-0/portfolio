@@ -1,5 +1,7 @@
 ---
-// LangToggle.astro - ES/EN language switch button
+import { getData, type Lang } from "../i18n/index";
+const { lang = "es" } = Astro.props;
+const data = getData(lang as Lang);
 ---
 
 <button
@@ -18,7 +20,7 @@
     <line x1="2" y1="12" x2="22" y2="12" />
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
   </svg>
-  <span id="lang-toggle-text">EN</span>
+  <span id="lang-toggle-text">{data.lang.toggle}</span>
 </button>
 
 <script is:inline>
@@ -31,6 +33,14 @@
       var next = current === 'es' ? 'en' : 'es';
       window.dispatchEvent(new CustomEvent('langChange', { detail: { lang: next } }));
       btn.setAttribute('aria-label', next === 'es' ? 'Switch to English' : 'Cambiar a Español');
+
+      var url = new URL(window.location.href);
+      if (next === 'es') {
+        url.searchParams.delete('lang');
+      } else {
+        url.searchParams.set('lang', next);
+      }
+      history.replaceState(null, '', url.toString());
     });
 
     // Set initial aria-label based on current language

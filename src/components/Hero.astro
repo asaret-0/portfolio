@@ -1,8 +1,10 @@
 ---
 import SVGBackground from "./SVGBackground.astro";
-import esData from "../i18n/es.json";
+import { getData, type Lang } from "../i18n/index";
 
-const data = esData;
+const { lang = "es" } = Astro.props;
+const data = getData(lang as Lang);
+const contact = data.contact;
 ---
 
 <section
@@ -105,7 +107,7 @@ const data = esData;
 
       <!-- GitHub -->
       <a
-        href="https://github.com/asaret-0"
+        href={contact.github}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -130,7 +132,7 @@ const data = esData;
 
       <!-- LinkedIn -->
       <a
-        href="https://www.linkedin.com/in/abraham-kuk"
+        href={contact.linkedin}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
@@ -155,7 +157,7 @@ const data = esData;
 
       <!-- Email -->
       <a
-        href="mailto:asael.kuk@gmail.com"
+        href={`mailto:${contact.email}`}
         aria-label="Email"
         class="w-10 h-10 flex items-center justify-center rounded-full
                border border-[var(--color-text-light-secondary)]/20

@@ -4,16 +4,23 @@ import esData from "../i18n/es.json";
 import enData from "../i18n/en.json";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
+import { getData, type Lang } from "../i18n/index";
 
 interface Props {
   title?: string;
   description?: string;
+  lang?: Lang;
 }
 
 const {
-  title = "Abraham P. | Portfolio",
-  description = "Professional portfolio",
+  lang = "es",
+  title,
+  description,
 } = Astro.props;
+
+const data = getData(lang);
+const resolvedTitle = title || data.meta.title;
+const resolvedDescription = description || data.meta.description;
 const siteUrl = "https://portfolio-abrahampuch.vercel.app/";
 
 // Pre-serialize i18n data as minified JSON strings to reduce inline script payload
@@ -21,15 +28,15 @@ const esJson = JSON.stringify(esData);
 const enJson = JSON.stringify(enData);
 ---
 
-<html lang="es" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <link rel="icon" href="/icon-v1.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" id="meta-description" content={description} />
+    <meta name="description" id="meta-description" content={resolvedDescription} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{resolvedTitle}</title>
 
     <!-- Theme color -->
     <meta
@@ -45,21 +52,26 @@ const enJson = JSON.stringify(enData);
 
     <!-- OG / Social -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" id="og-description" content={description} />
+    <meta property="og:title" content={resolvedTitle} />
+    <meta property="og:description" id="og-description" content={resolvedDescription} />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:locale:alternate" content="en_US" />
 
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={resolvedTitle} />
     <meta
       name="twitter:description"
       id="twitter-description"
-      content={description}
+      content={resolvedDescription}
     />
 
     <link rel="canonical" href={siteUrl} />
+
+    <!-- hreflang alternate links -->
+    <link rel="alternate" hreflang="es" href={siteUrl} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}?lang=en`} />
+    <link rel="alternate" hreflang="x-default" href={siteUrl} />
 
     <!-- Preconnect for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,13 +119,13 @@ const enJson = JSON.stringify(enData);
     </script>
 
     <!-- Anti-FOUC: Apply saved language before render -->
-    <script is:inline>
+    <script is:inline define:vars={{ defaultLang: lang }}>
       (function () {
+        var lang = defaultLang;
         try {
-          var lang = localStorage.getItem("lang");
-        } catch (e) {
-          var lang = null;
-        }
+          var stored = localStorage.getItem("lang");
+          if (stored === "en" || stored === "es") lang = stored;
+        } catch (e) {}
         if (lang === "en") {
           document.documentElement.lang = "en";
         }
@@ -289,6 +301,17 @@ const enJson = JSON.stringify(enData);
           applyLang(e.detail.lang);
         });
       })();
+    </script>
+
+    <!-- Phone obfuscation handler -->
+    <script is:inline>
+      document.querySelectorAll("[data-tel]").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          var tel = el.getAttribute("data-tel");
+          window.location.href = "tel:" + tel;
+        });
+      });
     </script>
 
     <!-- Scroll animations (includes section dividers) -->

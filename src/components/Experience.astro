@@ -1,7 +1,8 @@
 ---
-import esData from '../i18n/es.json';
+import { getData, type Lang } from '../i18n/index';
 
-const data = esData;
+const { lang = 'es' } = Astro.props;
+const data = getData(lang as Lang);
 ---
 
 <section id="experience" class="py-12 md:py-18 px-6">

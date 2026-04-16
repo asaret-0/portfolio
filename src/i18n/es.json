@@ -59,7 +59,6 @@
   ],
   "projects": [
     {
-      "id": 0,
       "name": "PharmInventory(Core)",
       "startDate": "Ene 2026",
       "endDate": "Mar 2026",
@@ -120,6 +119,14 @@
   "theme": {
     "light": "Modo claro",
     "dark": "Modo oscuro"
+  },
+  "contact": {
+    "email": "asael.kuk@gmail.com",
+    "phone": "+529991374343",
+    "phoneDisplay": ["+52", "999", "137", "4343"],
+    "github": "https://github.com/asaret-0",
+    "linkedin": "https://www.linkedin.com/in/abraham-kuk",
+    "location": "Mérida, Yucatán, México"
   },
   "lang": {
     "toggle": "EN",

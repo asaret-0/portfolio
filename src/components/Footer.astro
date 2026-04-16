@@ -1,7 +1,9 @@
 ---
-import esData from "../i18n/es.json";
+import { getData, type Lang } from "../i18n/index";
 
-const data = esData;
+const { lang = "es" } = Astro.props;
+const data = getData(lang as Lang);
+const contact = data.contact;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -74,7 +76,7 @@ const currentYear = new Date().getFullYear();
       >
         <!-- Email -->
         <a
-          href="mailto:asael.kuk@gmail.com"
+          href={`mailto:${contact.email}`}
           class="group p-5 rounded-lg text-center
                bg-[var(--color-surface-light-secondary)] dark:bg-[var(--color-surface-dark-secondary)]
                border border-transparent hover:border-[var(--color-accent)]/20
@@ -99,13 +101,14 @@ const currentYear = new Date().getFullYear();
             class="text-xs font-body text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
                   group-hover:text-[var(--color-accent)] transition-colors duration-300 break-all"
           >
-            asael.kuk@gmail.com
+            {contact.email}
           </p>
         </a>
 
         <!-- Phone -->
         <a
-          href="tel:+529991374343"
+          href="#"
+          data-tel={contact.phone}
           class="group p-5 rounded-lg text-center
                bg-[var(--color-surface-light-secondary)] dark:bg-[var(--color-surface-dark-secondary)]
                border border-transparent hover:border-[var(--color-accent)]/20
@@ -129,7 +132,9 @@ const currentYear = new Date().getFullYear();
             class="text-xs font-body text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
                   group-hover:text-[var(--color-accent)] transition-colors duration-300"
           >
-            +52 999 137 4343
+            {contact.phoneDisplay.map((part, i) => (
+              <span>{part}{i < contact.phoneDisplay.length - 1 ? ' ' : ''}</span>
+            ))}
           </p>
         </a>
 
@@ -154,9 +159,9 @@ const currentYear = new Date().getFullYear();
           </svg>
           <p
             class="text-xs font-body text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]"
-            data-i18n="hero.location"
+            data-i18n="contact.location"
           >
-            {data.hero.location}
+            {contact.location}
           </p>
         </div>
       </div>
@@ -164,11 +169,11 @@ const currentYear = new Date().getFullYear();
       <!-- Social links -->
       <nav class="animate-on-scroll mb-16" aria-label="Social links">
         <div class="flex items-center justify-center gap-4">
-          <a
-            href="https://github.com/asaret-0"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
+<a
+             href={contact.github}
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="GitHub"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
                  dark:border-[var(--color-text-dark-secondary)]/20
@@ -188,11 +193,11 @@ const currentYear = new Date().getFullYear();
               ></path>
             </svg>
           </a>
-          <a
-            href="https://www.linkedin.com/in/abraham-kuk"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
+<a
+             href={contact.linkedin}
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="LinkedIn"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
                  dark:border-[var(--color-text-dark-secondary)]/20
@@ -212,9 +217,9 @@ const currentYear = new Date().getFullYear();
               ></path>
             </svg>
           </a>
-          <a
-            href="mailto:asael.kuk@gmail.com"
-            aria-label="Email"
+<a
+             href={`mailto:${contact.email}`}
+             aria-label="Email"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
                  dark:border-[var(--color-text-dark-secondary)]/20
