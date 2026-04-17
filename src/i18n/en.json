@@ -68,6 +68,16 @@
         "Development of services for complex domain invariants (stock, immutability, FEFO).",
         "React 19 SPA + CodeIgniter 4 API, monolith with decoupled frontend.",
         "Pure CRUD."
+      ],
+      "images": [
+        { "src": "/Proyectos/PharmInventory(Core)/01-login.jpeg", "alt": "Login screen" },
+        { "src": "/Proyectos/PharmInventory(Core)/02-dashboard.jpeg", "alt": "Main dashboard" },
+        { "src": "/Proyectos/PharmInventory(Core)/03-dashboard-alt.jpeg", "alt": "Alternative dashboard view" },
+        { "src": "/Proyectos/PharmInventory(Core)/04-agregar-producto.jpeg", "alt": "Add product form" },
+        { "src": "/Proyectos/PharmInventory(Core)/05-kardex.jpeg", "alt": "Kardex movement log" },
+        { "src": "/Proyectos/PharmInventory(Core)/06-lista-productos.jpeg", "alt": "Product list" },
+        { "src": "/Proyectos/PharmInventory(Core)/07-unidades-medida.jpeg", "alt": "Unit of measure management" },
+        { "src": "/Proyectos/PharmInventory(Core)/08-stock-bajo.jpeg", "alt": "Low stock alert" }
       ]
     }
   ],

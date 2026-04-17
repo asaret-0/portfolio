@@ -140,163 +140,141 @@ const enJson = JSON.stringify(enData);
     <Analytics />
 
     <!-- i18n data embedded for client-side switching -->
-    <script is:inline define:vars={{ esJson, enJson }}>
-      window.__i18n = { es: JSON.parse(esJson), en: JSON.parse(enJson) };
+    <script is:inline define:vars={{ esJson, enJson, defaultLang: lang }}>
+      // Only parse the initial language immediately; defer the other
+      var __i18nData = {};
+      var __esJson = esJson;
+      var __enJson = enJson;
+      var __initLang = "es";
       try {
-        window.__lang = localStorage.getItem("lang") || "es";
-      } catch (e) {
-        window.__lang = "es";
+        var stored = localStorage.getItem("lang");
+        if (stored === "en" || stored === "es") __initLang = stored;
+      } catch (e) {}
+      __i18nData[__initLang] = JSON.parse(__initLang === "en" ? __enJson : __esJson);
+      window.__lang = __initLang;
+
+      function getI18n(lang) {
+        if (!__i18nData[lang]) {
+          __i18nData[lang] = JSON.parse(lang === "en" ? __enJson : __esJson);
+        }
+        return __i18nData[lang];
       }
+      window.getI18n = getI18n;
     </script>
 
     <slot />
 
-    <!-- i18n engine -->
+    <!-- i18n engine (cached DOM refs, lazy-parse) -->
     <script is:inline>
       (function () {
+        // Cache all i18n elements + parse metadata once on init
+        var i18nEls = [];
+        var expEls = [];
+        var expHlEls = [];
+        var eduEls = [];
+        var eduHlEls = [];
+        var projEls = [];
+        var projHlEls = [];
+        var skillEls = [];
+        var activityEls = [];
+        var toggleBtn = document.getElementById("lang-toggle-text");
+        var metaDesc = document.getElementById("meta-description");
+        var ogDesc = document.getElementById("og-description");
+        var twDesc = document.getElementById("twitter-description");
+
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          i18nEls.push({ el: el, key: el.getAttribute("data-i18n") });
+        });
+        document.querySelectorAll("[data-i18n-exp]").forEach(function (el) {
+          expEls.push({ el: el, idx: parseInt(el.getAttribute("data-i18n-exp")), field: el.getAttribute("data-i18n-field") });
+        });
+        document.querySelectorAll("[data-i18n-exp-hl]").forEach(function (el) {
+          var parts = el.getAttribute("data-i18n-exp-hl").split(",");
+          expHlEls.push({ el: el, expIdx: parseInt(parts[0]), hlIdx: parseInt(parts[1]) });
+        });
+        document.querySelectorAll("[data-i18n-edu]").forEach(function (el) {
+          eduEls.push({ el: el, idx: parseInt(el.getAttribute("data-i18n-edu")), field: el.getAttribute("data-i18n-field") });
+        });
+        document.querySelectorAll("[data-i18n-edu-hl]").forEach(function (el) {
+          var parts = el.getAttribute("data-i18n-edu-hl").split(",");
+          eduHlEls.push({ el: el, eduIdx: parseInt(parts[0]), hlIdx: parseInt(parts[1]) });
+        });
+        document.querySelectorAll("[data-i18n-proj]").forEach(function (el) {
+          projEls.push({ el: el, idx: parseInt(el.getAttribute("data-i18n-proj")), field: el.getAttribute("data-i18n-field") });
+        });
+        document.querySelectorAll("[data-i18n-proj-hl]").forEach(function (el) {
+          var parts = el.getAttribute("data-i18n-proj-hl").split(",");
+          projHlEls.push({ el: el, projIdx: parseInt(parts[0]), hlIdx: parseInt(parts[1]) });
+        });
+        document.querySelectorAll("[data-i18n-skill]").forEach(function (el) {
+          skillEls.push({ el: el, idx: parseInt(el.getAttribute("data-i18n-skill")), field: el.getAttribute("data-i18n-field") });
+        });
+        document.querySelectorAll("[data-i18n-activity]").forEach(function (el) {
+          activityEls.push({ el: el, idx: parseInt(el.getAttribute("data-i18n-activity")) });
+        });
+
         function applyLang(lang) {
-          var data = window.__i18n[lang];
+          var data = window.getI18n(lang);
           if (!data) return;
           window.__lang = lang;
-          try {
-            localStorage.setItem("lang", lang);
-          } catch (e) {}
+          try { localStorage.setItem("lang", lang); } catch (e) {}
           document.documentElement.lang = lang;
 
-          // Update all elements with data-i18n
-          document.querySelectorAll("[data-i18n]").forEach(function (el) {
-            var key = el.getAttribute("data-i18n");
-            var val = key.split(".").reduce(function (o, k) {
-              return o && o[k];
-            }, data);
-            if (val !== undefined && val !== null) {
-              el.textContent = val;
-            }
-          });
-
-          // Update dynamic lists (experience, education, skills, activities)
-          // Experience
-          document.querySelectorAll("[data-i18n-exp]").forEach(function (el) {
-            var idx = parseInt(el.getAttribute("data-i18n-exp"));
-            var field = el.getAttribute("data-i18n-field");
-            var exp = data.experience[idx];
-            if (exp && field && exp[field] !== undefined) {
-              el.textContent = exp[field];
-            }
-          });
-
-          // Experience highlights
-          document
-            .querySelectorAll("[data-i18n-exp-hl]")
-            .forEach(function (el) {
-              var parts = el.getAttribute("data-i18n-exp-hl").split(",");
-              var expIdx = parseInt(parts[0]);
-              var hlIdx = parseInt(parts[1]);
-              var exp = data.experience[expIdx];
-              if (
-                exp &&
-                exp.highlights &&
-                exp.highlights[hlIdx] !== undefined
-              ) {
-                el.textContent = exp.highlights[hlIdx];
-              }
-            });
-
-          // Education
-          document.querySelectorAll("[data-i18n-edu]").forEach(function (el) {
-            var idx = parseInt(el.getAttribute("data-i18n-edu"));
-            var field = el.getAttribute("data-i18n-field");
-            var edu = data.education[idx];
-            if (edu && field && edu[field] !== undefined) {
-              el.textContent = edu[field];
-            }
-          });
-
-          // Education highlights
-          document
-            .querySelectorAll("[data-i18n-edu-hl]")
-            .forEach(function (el) {
-              var parts = el.getAttribute("data-i18n-edu-hl").split(",");
-              var eduIdx = parseInt(parts[0]);
-              var hlIdx = parseInt(parts[1]);
-              var edu = data.education[eduIdx];
-              if (
-                edu &&
-                edu.highlights &&
-                edu.highlights[hlIdx] !== undefined
-              ) {
-                el.textContent = edu.highlights[hlIdx];
-              }
-            });
-
-          // Projects
-          document.querySelectorAll("[data-i18n-proj]").forEach(function (el) {
-            var idx = parseInt(el.getAttribute("data-i18n-proj"));
-            var field = el.getAttribute("data-i18n-field");
-            var proj = data.projects[idx];
-            if (proj && field && proj[field] !== undefined) {
-              el.textContent = proj[field];
-            }
-          });
-
-          // Project highlights
-          document
-            .querySelectorAll("[data-i18n-proj-hl]")
-            .forEach(function (el) {
-              var parts = el.getAttribute("data-i18n-proj-hl").split(",");
-              var projIdx = parseInt(parts[0]);
-              var hlIdx = parseInt(parts[1]);
-              var proj = data.projects[projIdx];
-              if (
-                proj &&
-                proj.highlights &&
-                proj.highlights[hlIdx] !== undefined
-              ) {
-                el.textContent = proj.highlights[hlIdx];
-              }
-            });
-
-          // Skills
-          document.querySelectorAll("[data-i18n-skill]").forEach(function (el) {
-            var idx = parseInt(el.getAttribute("data-i18n-skill"));
-            var field = el.getAttribute("data-i18n-field");
-            var skill = data.skills[idx];
-            if (skill && field && skill[field] !== undefined) {
-              el.textContent = skill[field];
-            }
-          });
-
-          // Activities
-          document
-            .querySelectorAll("[data-i18n-activity]")
-            .forEach(function (el) {
-              var idx = parseInt(el.getAttribute("data-i18n-activity"));
-              if (data.activities[idx] !== undefined) {
-                el.textContent = data.activities[idx];
-              }
-            });
-
-          // Update toggle button text
-          var toggleBtn = document.getElementById("lang-toggle-text");
-          if (toggleBtn) {
-            toggleBtn.textContent = data.lang.toggle;
+          var i, item;
+          for (i = 0; i < i18nEls.length; i++) {
+            item = i18nEls[i];
+            var val = item.key.split(".").reduce(function (o, k) { return o && o[k]; }, data);
+            if (val != null) item.el.textContent = val;
+          }
+          for (i = 0; i < expEls.length; i++) {
+            item = expEls[i];
+            var exp = data.experience[item.idx];
+            if (exp && exp[item.field] != null) item.el.textContent = exp[item.field];
+          }
+          for (i = 0; i < expHlEls.length; i++) {
+            item = expHlEls[i];
+            var ex = data.experience[item.expIdx];
+            if (ex && ex.highlights && ex.highlights[item.hlIdx] != null) item.el.textContent = ex.highlights[item.hlIdx];
+          }
+          for (i = 0; i < eduEls.length; i++) {
+            item = eduEls[i];
+            var edu = data.education[item.idx];
+            if (edu && edu[item.field] != null) item.el.textContent = edu[item.field];
+          }
+          for (i = 0; i < eduHlEls.length; i++) {
+            item = eduHlEls[i];
+            var ed = data.education[item.eduIdx];
+            if (ed && ed.highlights && ed.highlights[item.hlIdx] != null) item.el.textContent = ed.highlights[item.hlIdx];
+          }
+          for (i = 0; i < projEls.length; i++) {
+            item = projEls[i];
+            var proj = data.projects[item.idx];
+            if (proj && proj[item.field] != null) item.el.textContent = proj[item.field];
+          }
+          for (i = 0; i < projHlEls.length; i++) {
+            item = projHlEls[i];
+            var p = data.projects[item.projIdx];
+            if (p && p.highlights && p.highlights[item.hlIdx] != null) item.el.textContent = p.highlights[item.hlIdx];
+          }
+          for (i = 0; i < skillEls.length; i++) {
+            item = skillEls[i];
+            var skill = data.skills[item.idx];
+            if (skill && skill[item.field] != null) item.el.textContent = skill[item.field];
+          }
+          for (i = 0; i < activityEls.length; i++) {
+            item = activityEls[i];
+            if (data.activities[item.idx] != null) item.el.textContent = data.activities[item.idx];
           }
 
-          // Update meta title & description
+          if (toggleBtn) toggleBtn.textContent = data.lang.toggle;
           document.title = data.meta.title;
           var desc = data.meta.description || "";
-          var metaDesc = document.getElementById("meta-description");
-          var ogDesc = document.getElementById("og-description");
-          var twDesc = document.getElementById("twitter-description");
           if (metaDesc) metaDesc.setAttribute("content", desc);
           if (ogDesc) ogDesc.setAttribute("content", desc);
           if (twDesc) twDesc.setAttribute("content", desc);
         }
 
-        // Apply on load
         applyLang(window.__lang);
-
-        // Listen for language change
         window.addEventListener("langChange", function (e) {
           applyLang(e.detail.lang);
         });

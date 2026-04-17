@@ -166,7 +166,10 @@ const data = getData(lang as Lang);
     var isMenuOpen = false;
     var scrollTicking = false;
 
-    // Scroll: add background to navbar using inline styles (Tailwind v4 can't detect dynamic classes)
+    // Cache hamburger lines outside handlers
+    var hamburgerLines = mobileBtn ? mobileBtn.querySelectorAll(".hamburger-line") : null;
+
+    // Scroll: add background to navbar using inline styles
     window.addEventListener("scroll", function () {
       if (scrollTicking) return;
       scrollTicking = true;
@@ -183,7 +186,7 @@ const data = getData(lang as Lang);
           navbar.style.boxShadow = "";
         }
 
-        // Active section highlighting (combined into single scroll handler)
+        // Active section highlighting
         var sections = document.querySelectorAll("section[id]");
         var navLinks = document.querySelectorAll(".nav-link");
         var scrollY = window.scrollY + 120;
@@ -213,10 +216,9 @@ const data = getData(lang as Lang);
         mobileBtn.setAttribute("aria-expanded", "true");
         mobileBtn.setAttribute("aria-label", "Close menu");
         document.body.style.overflow = "hidden";
-        var lines = mobileBtn.querySelectorAll(".hamburger-line");
-        lines[0].classList.add("rotate-45", "translate-y-[4.5px]");
-        lines[1].classList.add("opacity-0");
-        lines[2].classList.add("-rotate-45", "-translate-y-[4.5px]", "w-5");
+        hamburgerLines[0].classList.add("rotate-45", "translate-y-[4.5px]");
+        hamburgerLines[1].classList.add("opacity-0");
+        hamburgerLines[2].classList.add("-rotate-45", "-translate-y-[4.5px]", "w-5");
       }
 
       function closeMenu() {
@@ -225,18 +227,14 @@ const data = getData(lang as Lang);
         mobileBtn.setAttribute("aria-expanded", "false");
         mobileBtn.setAttribute("aria-label", "Open menu");
         document.body.style.overflow = "";
-        var lines = mobileBtn.querySelectorAll(".hamburger-line");
-        lines[0].classList.remove("rotate-45", "translate-y-[4.5px]");
-        lines[1].classList.remove("opacity-0");
-        lines[2].classList.remove("-rotate-45", "-translate-y-[4.5px]", "w-5");
+        hamburgerLines[0].classList.remove("rotate-45", "translate-y-[4.5px]");
+        hamburgerLines[1].classList.remove("opacity-0");
+        hamburgerLines[2].classList.remove("-rotate-45", "-translate-y-[4.5px]", "w-5");
       }
 
       mobileBtn.addEventListener("click", function () {
-        if (isMenuOpen) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
+        if (isMenuOpen) closeMenu();
+        else openMenu();
       });
 
       // Close mobile menu on link click
@@ -254,11 +252,9 @@ const data = getData(lang as Lang);
         }
       });
 
-      // Close menu when resizing to desktop (otherwise body overflow:hidden stays stuck)
+      // Close menu when resizing to desktop
       window.addEventListener("resize", function () {
-        if (isMenuOpen && window.innerWidth >= 768) {
-          closeMenu();
-        }
+        if (isMenuOpen && window.innerWidth >= 768) closeMenu();
       });
     }
   })();
