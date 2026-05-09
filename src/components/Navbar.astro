@@ -12,7 +12,9 @@ const data = getData(lang as Lang);
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
   aria-label="Main navigation"
 >
-  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+  <div
+    class="max-w-5xl mx-auto px-4 md:px-5 py-4 flex items-center justify-between"
+  >
     <!-- Logo / Name -->
     <a
       href="#hero"
@@ -29,45 +31,45 @@ const data = getData(lang as Lang);
     </a>
 
     <!-- Desktop Nav Links -->
-    <div class="hidden md:flex items-center gap-8">
+    <div class="hidden md:flex items-center gap-3 md:gap-5">
       <a
         href="#experience"
-        class="nav-link text-sm font-body
+        class="nav-link text-sm font-body whitespace-nowrap
          text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
          hover:text-[var(--color-accent)] transition-colors duration-300"
         data-i18n="nav.experience">{data.nav.experience}</a
       >
       <a
         href="#education"
-        class="nav-link text-sm font-body
+        class="nav-link text-sm font-body whitespace-nowrap
          text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
          hover:text-[var(--color-accent)] transition-colors duration-300"
         data-i18n="nav.education">{data.nav.education}</a
       >
       <a
         href="#projects"
-        class="nav-link text-sm font-body
+        class="nav-link text-sm font-body whitespace-nowrap
          text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
          hover:text-[var(--color-accent)] transition-colors duration-300"
         data-i18n="nav.projects">{data.nav.projects}</a
       >
       <a
         href="#skills"
-        class="nav-link text-sm font-body
+        class="nav-link text-sm font-body whitespace-nowrap
          text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
          hover:text-[var(--color-accent)] transition-colors duration-300"
         data-i18n="nav.skills">{data.nav.skills}</a
       >
       <a
         href="#activities"
-        class="nav-link text-sm font-body
+        class="nav-link text-sm font-body whitespace-nowrap
          text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
          hover:text-[var(--color-accent)] transition-colors duration-300"
         data-i18n="nav.activities">{data.nav.activities}</a
       >
       <a
         href="#contact"
-        class="nav-link text-sm font-body
+        class="nav-link text-sm font-body whitespace-nowrap
          text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
          hover:text-[var(--color-accent)] transition-colors duration-300"
         data-i18n="nav.contact">{data.nav.contact}</a
