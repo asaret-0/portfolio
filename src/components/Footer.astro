@@ -132,17 +132,26 @@ const currentYear = new Date().getFullYear();
             class="text-xs font-body text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
                   group-hover:text-[var(--color-accent)] transition-colors duration-300"
           >
-            {contact.phoneDisplay.map((part, i) => (
-              <span>{part}{i < contact.phoneDisplay.length - 1 ? ' ' : ''}</span>
-            ))}
+            {
+              contact.phoneDisplay.map((part, i) => (
+                <span>
+                  {part}
+                  {i < contact.phoneDisplay.length - 1 ? " " : ""}
+                </span>
+              ))
+            }
           </p>
         </a>
 
         <!-- Location (consistent styling with other cards) -->
-        <div
+        <a
+          href={contact.map}
+          target="_blank"
+          rel="noopener noreferrer"
           class="group p-5 rounded-lg text-center
                bg-[var(--color-surface-light-secondary)] dark:bg-[var(--color-surface-dark-secondary)]
-               border border-transparent"
+               border border-transparent hover:border-[var(--color-accent)]/20
+               transition-all duration-300"
         >
           <svg
             class="w-5 h-5 mx-auto mb-3 text-[var(--color-accent)]"
@@ -163,17 +172,17 @@ const currentYear = new Date().getFullYear();
           >
             {contact.location}
           </p>
-        </div>
+        </a>
       </div>
 
       <!-- Social links -->
       <nav class="animate-on-scroll mb-16" aria-label="Social links">
         <div class="flex items-center justify-center gap-4">
-<a
-             href={contact.github}
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="GitHub"
+          <a
+            href={contact.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
                  dark:border-[var(--color-text-dark-secondary)]/20
@@ -193,11 +202,11 @@ const currentYear = new Date().getFullYear();
               ></path>
             </svg>
           </a>
-<a
-             href={contact.linkedin}
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="LinkedIn"
+          <a
+            href={contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
                  dark:border-[var(--color-text-dark-secondary)]/20
@@ -217,9 +226,9 @@ const currentYear = new Date().getFullYear();
               ></path>
             </svg>
           </a>
-<a
-             href={`mailto:${contact.email}`}
-             aria-label="Email"
+          <a
+            href={`mailto:${contact.email}`}
+            aria-label="Email"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
                  dark:border-[var(--color-text-dark-secondary)]/20

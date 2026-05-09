@@ -70,14 +70,38 @@
         "CRUD Puro."
       ],
       "images": [
-        { "src": "/Proyectos/PharmInventory(Core)/01-login.jpeg", "alt": "Pantalla de inicio de sesión" },
-        { "src": "/Proyectos/PharmInventory(Core)/02-dashboard.jpeg", "alt": "Dashboard principal" },
-        { "src": "/Proyectos/PharmInventory(Core)/03-dashboard-alt.jpeg", "alt": "Vista alternativa del dashboard" },
-        { "src": "/Proyectos/PharmInventory(Core)/04-agregar-producto.jpeg", "alt": "Formulario para agregar producto" },
-        { "src": "/Proyectos/PharmInventory(Core)/05-kardex.jpeg", "alt": "Registro kardex de movimientos" },
-        { "src": "/Proyectos/PharmInventory(Core)/06-lista-productos.jpeg", "alt": "Lista de productos" },
-        { "src": "/Proyectos/PharmInventory(Core)/07-unidades-medida.jpeg", "alt": "Gestión de unidades de medida" },
-        { "src": "/Proyectos/PharmInventory(Core)/08-stock-bajo.jpeg", "alt": "Alerta de stock bajo" }
+        {
+          "src": "/Proyectos/PharmInventory(Core)/01-login.jpeg",
+          "alt": "Pantalla de inicio de sesión"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/02-dashboard.jpeg",
+          "alt": "Dashboard principal"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/03-dashboard-alt.jpeg",
+          "alt": "Vista alternativa del dashboard"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/04-agregar-producto.jpeg",
+          "alt": "Formulario para agregar producto"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/05-kardex.jpeg",
+          "alt": "Registro kardex de movimientos"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/06-lista-productos.jpeg",
+          "alt": "Lista de productos"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/07-unidades-medida.jpeg",
+          "alt": "Gestión de unidades de medida"
+        },
+        {
+          "src": "/Proyectos/PharmInventory(Core)/08-stock-bajo.jpeg",
+          "alt": "Alerta de stock bajo"
+        }
       ]
     }
   ],
@@ -133,10 +157,16 @@
   "contact": {
     "email": "asael.kuk@gmail.com",
     "phone": "+529991374343",
-    "phoneDisplay": ["+52", "999", "137", "4343"],
+    "phoneDisplay": [
+      "+52",
+      "999",
+      "137",
+      "4343"
+    ],
     "github": "https://github.com/asaret-0",
     "linkedin": "https://www.linkedin.com/in/abraham-kuk",
-    "location": "Mérida, Yucatán, México"
+    "location": "Mérida, Yucatán, México",
+    "map": "https://maps.app.goo.gl/7h46ZsfB5PHuB4CV6"
   },
   "lang": {
     "toggle": "EN",
