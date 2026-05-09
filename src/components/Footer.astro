@@ -3,7 +3,6 @@ import { getData, type Lang } from "../i18n/index";
 
 const { lang = "es" } = Astro.props;
 const data = getData(lang as Lang);
-const contact = data.contact;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -76,7 +75,7 @@ const currentYear = new Date().getFullYear();
       >
         <!-- Email -->
         <a
-          href={`mailto:${contact.email}`}
+          href={`mailto:${data.contact.email}`}
           class="group p-5 rounded-lg text-center
                bg-[var(--color-surface-light-secondary)] dark:bg-[var(--color-surface-dark-secondary)]
                border border-transparent hover:border-[var(--color-accent)]/20
@@ -101,14 +100,14 @@ const currentYear = new Date().getFullYear();
             class="text-xs font-body text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]
                   group-hover:text-[var(--color-accent)] transition-colors duration-300 break-all"
           >
-            {contact.email}
+            {data.contact.email}
           </p>
         </a>
 
         <!-- Phone -->
         <a
           href="#"
-          data-tel={contact.phone}
+          data-tel={data.contact.phone}
           class="group p-5 rounded-lg text-center
                bg-[var(--color-surface-light-secondary)] dark:bg-[var(--color-surface-dark-secondary)]
                border border-transparent hover:border-[var(--color-accent)]/20
@@ -133,10 +132,10 @@ const currentYear = new Date().getFullYear();
                   group-hover:text-[var(--color-accent)] transition-colors duration-300"
           >
             {
-              contact.phoneDisplay.map((part, i) => (
+              data.contact.phoneDisplay.map((part, i) => (
                 <span>
                   {part}
-                  {i < contact.phoneDisplay.length - 1 ? " " : ""}
+                  {i < data.contact.phoneDisplay.length - 1 ? " " : ""}
                 </span>
               ))
             }
@@ -145,7 +144,7 @@ const currentYear = new Date().getFullYear();
 
         <!-- Location (consistent styling with other cards) -->
         <a
-          href={contact.map}
+          href={data.contact.map}
           target="_blank"
           rel="noopener noreferrer"
           class="group p-5 rounded-lg text-center
@@ -170,7 +169,7 @@ const currentYear = new Date().getFullYear();
             class="text-xs font-body text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]"
             data-i18n="contact.location"
           >
-            {contact.location}
+            {data.contact.location}
           </p>
         </a>
       </div>
@@ -179,7 +178,7 @@ const currentYear = new Date().getFullYear();
       <nav class="animate-on-scroll mb-16" aria-label="Social links">
         <div class="flex items-center justify-center gap-4">
           <a
-            href={contact.github}
+            href={data.contact.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -203,7 +202,7 @@ const currentYear = new Date().getFullYear();
             </svg>
           </a>
           <a
-            href={contact.linkedin}
+            href={data.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -227,7 +226,7 @@ const currentYear = new Date().getFullYear();
             </svg>
           </a>
           <a
-            href={`mailto:${contact.email}`}
+            href={`mailto:${data.contact.email}`}
             aria-label="Email"
             class="w-11 h-11 flex items-center justify-center rounded-full
                  border border-[var(--color-text-light-secondary)]/20
