@@ -194,22 +194,25 @@ const data = getData(lang as Lang);
         var sections = document.querySelectorAll("section[id]");
         var navLinks = document.querySelectorAll(".nav-link");
 
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var id = entry.target.getAttribute("id");
-              navLinks.forEach(function (link) {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === "#" + id) {
-                  link.classList.add("active");
-                }
-              });
-            }
-          });
-        }, {
-          rootMargin: "-20% 0px -60% 0px",
-          threshold: 0
-        });
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                var id = entry.target.getAttribute("id");
+                navLinks.forEach(function (link) {
+                  link.classList.remove("active");
+                  if (link.getAttribute("href") === "#" + id) {
+                    link.classList.add("active");
+                  }
+                });
+              }
+            });
+          },
+          {
+            rootMargin: "-20% 0px -60% 0px",
+            threshold: 0,
+          },
+        );
 
         sections.forEach(function (section) {
           observer.observe(section);
