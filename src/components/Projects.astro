@@ -44,7 +44,11 @@ const data = getData(lang as Lang);
         <h3 class="text-lg md:text-xl font-display font-semibold mb-1
                   text-[var(--color-text-light-primary)] dark:text-[var(--color-text-dark-primary)]">
           <span data-i18n-proj={String(idx)} data-i18n-field="name">{project.name}</span>
-          {' '}
+          <span class="mx-1 font-light">-</span>
+          <span class="text-xs font-display font-thin tracking-wider  text-[var(--color-accent)]"
+                data-i18n-proj={String(idx)} data-i18n-field="type">
+            ({project.type})
+          </span>
         </h3>
         <p class="text-sm font-body mb-4
                   text-[var(--color-text-light-secondary)] dark:text-[var(--color-text-dark-secondary)]"

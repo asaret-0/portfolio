@@ -59,6 +59,7 @@
   ],
   "projects": [
     {
+      "type": "WEB-APPLICATION",
       "name": "PharmInventory(Core)",
       "summary": "Inventory management system for the distribution and commercialization of pharmaceuticals.",
       "startDate": "Jan 2026",
