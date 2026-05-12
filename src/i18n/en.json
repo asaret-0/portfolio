@@ -59,8 +59,8 @@
   ],
   "projects": [
     {
-      "type": "WEB-APPLICATION",
-      "name": "PharmInventory(Core)",
+      "type": "WEB APPLICATION",
+      "name": "PharmInventory",
       "summary": "Inventory management system for the distribution and commercialization of pharmaceuticals.",
       "startDate": "Jan 2026",
       "endDate": "Mar 2026",
@@ -104,6 +104,50 @@
           "alt": "Low stock alert"
         }
       ]
+    },
+    {
+      "type": "TERMINAL TOOL",
+      "name": "Command History Manager",
+      "summary": "Terminal tool for command management for Bash/PowerShell.",
+      "highlights": [
+        "Addition of advanced search and filtering functionality to facilitate retrieval of previous commands.",
+        "Implementation of different configuration profiles for various terminal environments (development, production, etc.).",
+        "Built based on the core of fzf, with local history storage."
+      ],
+      "images": [
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (1).png",
+          "alt": "Windows PowerShell 1"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (2).png",
+          "alt": "Windows PowerShell 2"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (3).png",
+          "alt": "Windows PowerShell 3"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (4).png",
+          "alt": "Windows PowerShell 4"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (5).png",
+          "alt": "Linux Bash 1"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (6).png",
+          "alt": "Linux Bash 2"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (7).png",
+          "alt": "Linux Bash 3"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (8).png",
+          "alt": "Linux Bash 4"
+        }
+      ]
     }
   ],
   "skills": [
@@ -133,7 +177,7 @@
     },
     {
       "label": "Languages",
-      "details": "English (TOEFL B2), Spanish (Native)."
+      "details": "English (Intermediate), Spanish (Native)."
     },
     {
       "label": "Interpersonal Skills",
@@ -144,7 +188,6 @@
     "Continuous language learning.",
     "Optimizing development environments and workflows.",
     "Self-taught study of physics and discrete mathematics.",
-    "Physical training.",
     "Cinema, series and anime."
   ],
   "footer": {

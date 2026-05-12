@@ -59,12 +59,12 @@
   ],
   "projects": [
     {
-      "type": "WEB-APPLICATION",
-      "name": "PharmInventory(Core)",
+      "type": "APLICACIÓN WEB",
+      "name": "PharmInventory",
+      "summary": "Sistema de gestión de inventario para la distribución y comercialización de medicamentos.",
       "startDate": "Ene 2026",
       "endDate": "Mar 2026",
       "location": "Mérida, Yucatán, México",
-      "summary": "Sistema de gestión de inventario para la distribución y comercialización de medicamentos.",
       "highlights": [
         "Desarrollo de servicios para invariantes de dominio complejas (stock, inmutabilidad, FEFO).",
         "React 19 SPA + CodeIgniter 4 API, monolito con frontend desacoplado.",
@@ -104,6 +104,50 @@
           "alt": "Alerta de stock bajo"
         }
       ]
+    },
+    {
+      "type": "HERRAMIENTA DE TERMINAL",
+      "name": "Herramienta de Gestión de Comandos",
+      "summary": "Herramienta de terminal para gestión de comandos para Bash/PowerShell.",
+      "highlights": [
+        "Adición de funcionalidad de búsqueda y filtrado avanzado para facilitar la recuperación de comandos previos.",
+        "Implementación de diferentes perfiles de configuración para diferentes entornos de terminal (desarrollo, producción, etc.).",
+        "Hecho en base al core de fzf, con almacenamiento local de historial."
+      ],
+      "images": [
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (1).png",
+          "alt": "Windows PowerShell 1"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (2).png",
+          "alt": "Windows PowerShell 2"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (3).png",
+          "alt": "Windows PowerShell 3"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (4).png",
+          "alt": "Windows PowerShell 4"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (5).png",
+          "alt": "Linux Bash 1"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (6).png",
+          "alt": "Linux Bash 2"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (7).png",
+          "alt": "Linux Bash 3"
+        },
+        {
+          "src": "/Proyectos/CommandHistoryManager/Command History Manager (8).png",
+          "alt": "Linux Bash 4"
+        }
+      ]
     }
   ],
   "skills": [
@@ -133,7 +177,7 @@
     },
     {
       "label": "Idiomas",
-      "details": "Inglés (TOEFL B2), Español (Nativo)."
+      "details": "Inglés (Intermedio), Español (Nativo)."
     },
     {
       "label": "Habilidades Interpersonales",
@@ -144,7 +188,6 @@
     "Aprendizaje continuo de idiomas.",
     "Optimización de entornos de desarrollo y flujos de trabajo.",
     "Estudio autodidacta de física y matemáticas discretas.",
-    "Entrenamiento físico.",
     "Cine, series y anime."
   ],
   "footer": {
